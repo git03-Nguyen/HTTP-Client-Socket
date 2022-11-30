@@ -104,7 +104,7 @@ public class GET {
         
         while ((byte_read = in.read()) != -1) {
             byteBuff.write(byte_read);
-            if (byteBuff.toString().endsWith("\r\n\r\n")) {
+            if (byteBuff.toString("iso-8859-1").endsWith("\r\n\r\n")) {
                 break;
             }
         }
@@ -126,17 +126,17 @@ public class GET {
             ByteArrayOutputStream chunkLen = new ByteArrayOutputStream();
             do {
                 chunkLen.reset();
-                while (!(chunkLen.toString().endsWith("\r\n"))) {
+                while (!(chunkLen.toString("iso-8859-1").endsWith("\r\n"))) {
                     chunkLen.write(in.read());
                 }
                 
-                int len = Integer.parseInt(chunkLen.toString().substring(0, chunkLen.size() - 2), 16);
+                int len = Integer.parseInt(chunkLen.toString("iso-8859-1").substring(0, chunkLen.size() - 2), 16);
                 buffer = in.readNBytes(len);
                 byteData.writeBytes(buffer);
                 
                 in.readNBytes(2); //Skip \r\n
                 
-            } while (!(chunkLen.toString().equals("0\r\n")));
+            } while (!(chunkLen.toString("iso-8859-1").equals("0\r\n")));
         }
         
         response.setData(byteData.toByteArray());
@@ -187,10 +187,8 @@ public class GET {
         // Delete old folder and create a new folder
         if (dir.exists()) {
             dir.delete();
-            System.out.println("  Deleting old folder " + folderName);
         }
-        dir.mkdirs();
-        System.out.println("  Created new folder: " + folderName);        
+        dir.mkdirs();      
     }
     
     // After all transfers have been done, close the connection

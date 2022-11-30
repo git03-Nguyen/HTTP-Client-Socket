@@ -1,7 +1,10 @@
 package team10.http.model;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,20 +33,22 @@ public class HttpResponse {
         this.url = url;
     }
     
-    public boolean isChunkedEncoded() {
-        return (new String(header)).contains("Transfer-Encoding: chunked");
+    public boolean isChunkedEncoded() throws UnsupportedEncodingException {
+        return (new String(header, "iso-8859-1")).contains("Transfer-Encoding: chunked");
     }
     
     // Content length equals to Content-Length: <value>
     // or the length of data after completely receiving data (chunked)
-    public int getContentLength() {
+    public int getContentLength() throws UnsupportedEncodingException {
         if (isChunkedEncoded()) {
             if (data == null) 
                 return 0;
             return data.length;
         }
         
-        String strHeader = new String(header);
+        String strHeader;
+        strHeader = new String(header, "iso-8859-1");
+        
         int start = strHeader.indexOf("Content-Length:") + 16;
         int end = start;
         while (strHeader.charAt(end) != '\r' && strHeader.charAt(end) != '\n') end++;

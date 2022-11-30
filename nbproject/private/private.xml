@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/netbeans-workspace/HTTPClient/src/team10/http/model/HttpResponse.java</file>
-            <file>file:/D:/netbeans-workspace/HTTPClient/src/team10/http/Main.java</file>
-            <file>file:/D:/netbeans-workspace/HTTPClient/src/team10/http/control/GET.java</file>
-            <file>file:/D:/netbeans-workspace/HTTPClient/src/team10/http/model/HttpRequest.java</file>
+            <file>file:/D:/netbeans-workspace/HTTP_Client_Socket/src/team10/http/Main.java</file>
+            <file>file:/D:/netbeans-workspace/HTTP_Client_Socket/src/team10/http/control/GET.java</file>
+            <file>file:/D:/netbeans-workspace/HTTP_Client_Socket/src/team10/http/model/HttpResponse.java</file>
         </group>
     </open-files>
 </project-private>

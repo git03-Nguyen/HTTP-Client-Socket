@@ -12,7 +12,7 @@ public class Main {
                 @Override 
                 public void run() {
                     try {
-                        GET getHTTP = new GET(url, null);
+                        GET get = new GET(url, null);
                     } catch (Exception ex) {
                         System.err.println("URL: " + url + " is invalid.");
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

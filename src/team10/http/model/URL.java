@@ -1,9 +1,5 @@
 package team10.http.model;
 
-/**
- *
- * @author Administrator
- */
 public class URL {
     private final String protocol;
     private final String host;
